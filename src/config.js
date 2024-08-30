@@ -1,6 +1,12 @@
 /**
  * OSM Cat config
  */
+ 
+import MVT from 'ol/format/MVT.js';
+import Map from 'ol/Map.js';
+import VectorTileLayer from 'ol/layer/VectorTile.js';
+import VectorTileSource from 'ol/source/VectorTile.js';
+import View from 'ol/View.js';
 
 var imgSrc = 'src/img/';
 
@@ -48,6 +54,17 @@ var config = {
 				attributions: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Tiles style by <a href="https://www.hotosm.org/" target="_blank">Humanitarian OpenStreetMap Team</a> hosted by <a href="https://openstreetmap.fr/" target="_blank">OpenStreetMap France</a>',
 				url: 'https://{a-c}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png'
 			}),
+			visible: false
+}),
+		new VectorTileLayer({
+        source: new VectorTileSource({
+        format: new MVT(),
+        url: 'https://basemaps.arcgis.com/arcgis/rest/services/World_Basemap_v2/VectorTileServer/tile/{z}/{y}/{x}.pbf',
+			title: 'OpenStreetMap HOT',
+			iconSrc: imgSrc + 'logo_hotosm.png',
+			source: new ol.source.XYZ({
+				attributions: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, Tiles style by <a href="https://www.hotosm.org/" target="_blank">Humanitarian OpenStreetMap Team</a> hosted by <a href="https://openstreetmap.fr/" target="_blank">OpenStreetMap France</a>',
+				}),
 			visible: false
 		}),
 		new ol.layer.Tile({// OpenStreetMap France https://openstreetmap.fr
