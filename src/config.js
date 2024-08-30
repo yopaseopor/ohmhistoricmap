@@ -65,10 +65,10 @@ var config = {
     url: 'https://openlayers.org/data/vector/ecoregions.json',
     format: new GeoJSON(),
   }),
-  style: {
+  style: ({
     'fill-color': ['string', ['get', 'COLOR'], '#eee'],
-  },
-  
+ }),
+			visible: false 
 }),
 
 		new ol.layer.Tile({// OpenStreetMap France https://openstreetmap.fr
