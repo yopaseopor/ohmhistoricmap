@@ -25,8 +25,8 @@ var config = {
 	},
 	overpassApi: function(){
 		// https://overpass-turbo.eu/
-		var proxyOverpassApi = true;
-		var overpassApi = 'https://overpass-api.de/api/interpreter';
+		var proxyOverpassApi = false;
+		var overpassApi = 'https://overpass-api.openhistoricalmap.org/api/interpreter';
 		if (proxyOverpassApi)
 		{
 			overpassApi = 'https://overpass.kumi.systems/api/interpreter';
@@ -969,6 +969,80 @@ var config = {
 				var name = feature.get(name_key) || '';
 				var fill = new ol.style.Fill({
 					color: 'rgba(0,255,0,0.4)'
+				});
+				var stroke = new ol.style.Stroke({
+					color: '#0000ff',
+					width: 1.25
+				});
+				var style = new ol.style.Style({
+					image: new ol.style.Circle({
+						fill: fill,
+						stroke: stroke,
+						radius: 5
+					}),
+							text: new ol.style.Text({
+								text: name,
+								offsetX : 7,
+								offsetY : -12,
+								fill: new ol.style.Fill({
+                            color: 'rgba(0,0,0,1)'
+                        }),
+						}),
+					fill: fill,
+					stroke: stroke
+				});
+				return style;
+			}
+		},	
+		{
+			group: 'Per date',
+			title: 'Start_date',
+			query: '(nwr["start_date"]({{bbox}});node(w););out meta;',
+			iconSrc: imgSrc + 'base/circle.svg',
+			iconStyle: 'background-color:#0000ff',
+			style: function (feature) {
+				var key_regex = /^name$/
+				var name_key = feature.getKeys().filter(function(t){return t.match(key_regex)}).pop() || "name"
+				var name = feature.get(name_key) || '';
+				var fill = new ol.style.Fill({
+					color: 'rgba(0,0,255,0.4)'
+				});
+				var stroke = new ol.style.Stroke({
+					color: '#0000ff',
+					width: 1.25
+				});
+				var style = new ol.style.Style({
+					image: new ol.style.Circle({
+						fill: fill,
+						stroke: stroke,
+						radius: 5
+					}),
+							text: new ol.style.Text({
+								text: name,
+								offsetX : 7,
+								offsetY : -12,
+								fill: new ol.style.Fill({
+                            color: 'rgba(0,0,0,1)'
+                        }),
+						}),
+					fill: fill,
+					stroke: stroke
+				});
+				return style;
+			}
+		},	
+		{
+			group: 'Per date',
+			title: 'End_date',
+			query: '(nwr["end_date"]({{bbox}});node(w););out meta;',
+			iconSrc: imgSrc + 'base/circle.svg',
+			iconStyle: 'background-color:#0000ff',
+			style: function (feature) {
+				var key_regex = /^name$/
+				var name_key = feature.getKeys().filter(function(t){return t.match(key_regex)}).pop() || "name"
+				var name = feature.get(name_key) || '';
+				var fill = new ol.style.Fill({
+					color: 'rgba(0,0,255,0.4)'
 				});
 				var stroke = new ol.style.Stroke({
 					color: '#0000ff',
