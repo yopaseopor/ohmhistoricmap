@@ -2,10 +2,10 @@
  * OSM Cat config
  */
  
-import MVT from 'ol/format/MVT.js';
+import GeoJSON from 'ol/format/GeoJSON.js';
 import Map from 'ol/Map.js';
-import VectorTileLayer from 'ol/layer/VectorTile.js';
-import VectorTileSource from 'ol/source/VectorTile.js';
+import VectorLayer from 'ol/layer/Vector.js';
+import VectorSource from 'ol/source/Vector.js';
 import View from 'ol/View.js';
 
 var imgSrc = 'src/img/';
@@ -57,15 +57,20 @@ var config = {
 			visible: false
 			}),
 
-		new VectorTileLayer({// OpenStreetMap France https://openstreetmap.fr
-			title: 'OpenStreetMap France',
-			iconSrc: imgSrc + 'osmfr_logo-layer.png',
-			source: new VectorTileSource({
-                attributions: '&copy; <a href="https://www.openstreetmap.fr/" target="_blank">OpenStreetMap France</a>',
-				url: 'https://basemaps.arcgis.com/arcgis/rest/services/World_Basemap_v2/VectorTileServer/tile/{z}/{y}/{x}.pbf'
-						}),
-			visible: false
-		}),
+		new VectorLayer({
+			title: 'OpenStreetMap HOT',
+  background: '#1a2b39',
+  iconSrc: imgSrc + 'logo_hotosm.png',
+  source: new VectorSource({
+    url: 'https://openlayers.org/data/vector/ecoregions.json',
+    format: new GeoJSON(),
+  }),
+  style: {
+    'fill-color': ['string', ['get', 'COLOR'], '#eee'],
+  },
+  
+}),
+
 		new ol.layer.Tile({// OpenStreetMap France https://openstreetmap.fr
 			title: 'OpenStreetMap France',
 			iconSrc: imgSrc + 'osmfr_logo-layer.png',
