@@ -61,8 +61,7 @@ var config = {
 			title: 'OpenStreetMap France',
 			iconSrc: imgSrc + 'osmfr_logo-layer.png',
 			source: new VectorTileSource({
-                format: new MVT(),
-				attributions: '&copy; <a href="https://www.openstreetmap.fr/" target="_blank">OpenStreetMap France</a>',
+                attributions: '&copy; <a href="https://www.openstreetmap.fr/" target="_blank">OpenStreetMap France</a>',
 				url: 'https://basemaps.arcgis.com/arcgis/rest/services/World_Basemap_v2/VectorTileServer/tile/{z}/{y}/{x}.pbf'
 						}),
 			visible: false
