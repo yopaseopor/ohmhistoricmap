@@ -2,13 +2,6 @@
  * OSM Cat config
  */
  
-import MVT from 'ol/format/MVT.js';
-import Map from 'ol/Map.js';
-import VectorTileLayer from 'ol/layer/VectorTile.js';
-import VectorTileSource from 'ol/source/VectorTile.js';
-import View from 'ol/View.js';
-import {Fill, Stroke, Style} from 'ol/style.js';
-
 var imgSrc = 'src/img/';
 
 var config = {
