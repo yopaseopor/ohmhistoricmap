@@ -78,7 +78,7 @@ var config = {
 			'{z}/{x}/{y}.vector.pbf?access_token=' + key
 	  })//,
 	  //style: createMapboxStreetsV6Style(Style, Fill, Stroke, Icon, Text)
-	})
+	}),
 		new ol.layer.Tile({
 			title: 'Stadia Alidade smooth',
 			iconSrc: imgSrc + 'logo_stadiamaps.svg',
