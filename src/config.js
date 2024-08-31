@@ -2,11 +2,12 @@
  * OSM Cat config
  */
  
-import GeoJSON from 'ol/format/GeoJSON.js';
+import MVT from 'ol/format/MVT.js';
 import Map from 'ol/Map.js';
-import VectorLayer from 'ol/layer/Vector.js';
-import VectorSource from 'ol/source/Vector.js';
+import VectorTileLayer from 'ol/layer/VectorTile.js';
+import VectorTileSource from 'ol/source/VectorTile.js';
 import View from 'ol/View.js';
+import {Fill, Stroke, Style} from 'ol/style.js';
 
 var imgSrc = 'src/img/';
 
@@ -57,19 +58,19 @@ var config = {
 			visible: false
 			}),
 
-		new VectorLayer({
-			title: 'OpenStreetMap HOT',
-  background: '#1a2b39',
-  iconSrc: imgSrc + 'logo_hotosm.png',
-  source: new VectorSource({
-    url: 'https://openlayers.org/data/vector/ecoregions.json',
-    format: new GeoJSON(),
+		new VectorTileLayer({
+  declutter: true,
+  source: new VectorTileSource({
+    maxZoom: 15,
+    format: new MVT({
+      idProperty: 'iso_a3',
+    }),
+    url:
+      'https://ahocevar.com/geoserver/gwc/service/tms/1.0.0/' +
+      'ne:ne_10m_admin_0_countries@EPSG%3A900913@pbf/{z}/{x}/{-y}.pbf',
   }),
-  style: ({
-    'fill-color': ['string', ['get', 'COLOR'], '#eee'],
- }),
-			visible: false 
-}),
+  style: country,
+});
 
 		new ol.layer.Tile({// OpenStreetMap France https://openstreetmap.fr
 			title: 'OpenStreetMap France',
