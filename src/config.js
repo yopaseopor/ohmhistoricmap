@@ -68,11 +68,17 @@ var config = {
 			visible: false
 		}),
 		new ol.layer.VectorTile({
-  source: new ol.source.VectorTile({
-    format: new ol.format.MVT(),
-    url: 'https://basemaps.arcgis.com/v1/arcgis/rest/services/World_Basemap/VectorTileServer/tile/{z}/{y}/{x}.pbf',
-    tileGrid: ol.tilegrid.createXYZ({ extent: offsetExtent, maxZoom: 18 })
-  }),
+	  declutter: true,
+	  source: new ol.source.VectorTile({
+		attributions: '© <a href="https://www.mapbox.com/map-feedback/">Mapbox</a> ' +
+		  '© <a href="https://www.openstreetmap.org/copyright">' +
+		  'OpenStreetMap contributors</a>',
+		format: new ol.format.MVT(),
+		url: 'https://{a-d}.tiles.mapbox.com/v4/mapbox.mapbox-streets-v6/' +
+			'{z}/{x}/{y}.vector.pbf?access_token=' + key
+	  })//,
+	  //style: createMapboxStreetsV6Style(Style, Fill, Stroke, Icon, Text)
+	})
 		new ol.layer.Tile({
 			title: 'Stadia Alidade smooth',
 			iconSrc: imgSrc + 'logo_stadiamaps.svg',
