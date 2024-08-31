@@ -60,19 +60,19 @@ var config = {
 			}),
 			visible: false
 		}),
-		new ol.layer.VectorTile({
-	  declutter: true,
-	  source: new ol.source.VectorTile({
-		attributions: '© <a href="https://www.mapbox.com/map-feedback/">Mapbox</a> ' +
-		  '© <a href="https://www.openstreetmap.org/copyright">' +
-		  'OpenStreetMap contributors</a>',
-		format: new ol.format.MVT(),
-		url: 'https://{a-d}.tiles.mapbox.com/v4/mapbox.mapbox-streets-v6/' +
-			'{z}/{x}/{y}.vector.pbf?access_token=' + key
-	  }),
-	  style: createMapboxStreetsV6Style(Style, Fill, Stroke, Icon, Text),
-	  visible: false
-	}),
+//		new ol.layer.VectorTile({
+//	  declutter: true,
+//	  source: new ol.source.VectorTile({
+//		attributions: '© <a href="https://www.mapbox.com/map-feedback/">Mapbox</a> ' +
+//		  '© <a href="https://www.openstreetmap.org/copyright">' +
+//		  'OpenStreetMap contributors</a>',
+//		format: new ol.format.MVT(),
+//		url: 'https://{a-d}.tiles.mapbox.com/v4/mapbox.mapbox-streets-v6/' +
+//			'{z}/{x}/{y}.vector.pbf?access_token=' + key
+//	  }),
+//	  style: createMapboxStreetsV6Style(Style, Fill, Stroke, Icon, Text),
+//	  visible: false
+//	}),
 		new ol.layer.Tile({
 			title: 'Stadia Alidade smooth',
 			iconSrc: imgSrc + 'logo_stadiamaps.svg',
