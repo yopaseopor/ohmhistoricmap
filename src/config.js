@@ -73,8 +73,6 @@ var config = {
     url: 'https://basemaps.arcgis.com/v1/arcgis/rest/services/World_Basemap/VectorTileServer/tile/{z}/{y}/{x}.pbf',
     tileGrid: ol.tilegrid.createXYZ({ extent: offsetExtent, maxZoom: 18 })
   }),
-			visible: false
-		}),
 		new ol.layer.Tile({
 			title: 'Stadia Alidade smooth',
 			iconSrc: imgSrc + 'logo_stadiamaps.svg',
