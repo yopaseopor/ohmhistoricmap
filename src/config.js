@@ -58,20 +58,6 @@ var config = {
 			visible: false
 			}),
 
-		new VectorTileLayer({
-  declutter: true,
-  source: new VectorTileSource({
-    maxZoom: 15,
-    format: new MVT({
-      idProperty: 'iso_a3',
-    }),
-    url:
-      'https://ahocevar.com/geoserver/gwc/service/tms/1.0.0/' +
-      'ne:ne_10m_admin_0_countries@EPSG%3A900913@pbf/{z}/{x}/{-y}.pbf',
-  }),
-  style: country,
-});
-
 		new ol.layer.Tile({// OpenStreetMap France https://openstreetmap.fr
 			title: 'OpenStreetMap France',
 			iconSrc: imgSrc + 'osmfr_logo-layer.png',
@@ -79,6 +65,14 @@ var config = {
 				attributions: '&copy; <a href="https://www.openstreetmap.fr/" target="_blank">OpenStreetMap France</a>',
 				url: 'https://{a-c}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png'
 			}),
+			visible: false
+		}),
+		new ol.layer.VectorTile({
+  source: new ol.source.VectorTile({
+    format: new ol.format.MVT(),
+    url: 'https://basemaps.arcgis.com/v1/arcgis/rest/services/World_Basemap/VectorTileServer/tile/{z}/{y}/{x}.pbf',
+    tileGrid: ol.tilegrid.createXYZ({ extent: offsetExtent, maxZoom: 18 })
+  }),
 			visible: false
 		}),
 		new ol.layer.Tile({
