@@ -69,8 +69,9 @@ var config = {
 		format: new ol.format.MVT(),
 		url: 'https://{a-d}.tiles.mapbox.com/v4/mapbox.mapbox-streets-v6/' +
 			'{z}/{x}/{y}.vector.pbf?access_token=' + key
-	  })//,
-	  //style: createMapboxStreetsV6Style(Style, Fill, Stroke, Icon, Text)
+	  }),
+	  style: createMapboxStreetsV6Style(Style, Fill, Stroke, Icon, Text),
+	  visible: false
 	}),
 		new ol.layer.Tile({
 			title: 'Stadia Alidade smooth',
